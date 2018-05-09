@@ -127,6 +127,7 @@ navigator.mediaDevices.getUserMedia({ audio: true })
 ```	
 
 ###Final
+
 Injected script will write a new clip named 'answer' with an audio reading flag :D
 
 The flag is `PCTF{not_so_smart}`
