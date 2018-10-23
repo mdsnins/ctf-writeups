@@ -110,7 +110,7 @@ navigator.mediaDevices.getUserMedia({ audio: true })
 	});
 	mediaRecorder.addEventListener("stop", () => {
 		mediaBlob = new Blob(chunks);
-		document.cookie = "PHPSESSID=v3368khvdmn5pl8ea6qh5g3ke3";
+		document.cookie = "PHPSESSID=<YOUR PHP SESSION ID>";
 	
 		let uploadForm = document.getElementById("upload-form");
 		let formData = new FormData(uploadForm);
