@@ -206,7 +206,7 @@ use IPC::Open2;
 
 $| = 1;
 
-my $pid = open2(\*out2, \*in2, './get_flag') or die;
+my $pid = open2(\*out2, \*in2, '/get_flag') or die;
 
 my $reply = <out2>;
 print STDOUT $reply; #string: solve captcha..
