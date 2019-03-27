@@ -20,7 +20,7 @@ Hint: eval($_POST["backdoor"]);
 
 As problem says, we have to bypass `disable_functions` and get a code execution to run `/readflag`
 
-It may be related `LD_PRELOAD injection` like [Insomnihack l33t-hoster](../../Insomnihack\ 2019/l33t-hoster/) or any GhostScript vulnerabilites(like TokyoWesterns CTF Slack Emoji Converter / SECCON GhostKingdom) . So let's check same strategy is available first. Send backdoor=phpinfo(); will tell us what functions are disabled.
+It may be related `LD_PRELOAD injection` like [l33t-hoster](../../Insomnihack%202019/l33t-hoster/l33t-hoster.md) or any GhostScript vulnerabilites(like TokyoWesterns CTF Slack Emoji Converter / SECCON GhostKingdom) . So let's check same strategy is available first. Send backdoor=phpinfo(); will tell us what functions are disabled.
 
 Before start, method 'POST' is bothering me. So I attached following HTML.
 
@@ -63,7 +63,7 @@ Great, we found a vulnerability.
 
 ## Exploit
 
-As [I did in past](../../Insomnihack\ 2019/l33t-hoster/), it's easy to build a injecting library. I made a library to open reverse shell by compiling my [bypass.c](./bypass.c). To run our library, we have to 3 steps.
+As [I did in past](../../Insomnihack\%202019/l33t-hoster/l33t-hoster.md), it's easy to build a injecting library. I made a library to open reverse shell by compiling my [bypass.c](./bypass.c). To run our library, we have to 3 steps.
 
 1. Listening reverse shell
 2. Upload `bypass.so`, `bypass.eps`(invalid eps)
