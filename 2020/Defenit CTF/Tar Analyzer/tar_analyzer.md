@@ -1,6 +1,6 @@
 # Tar Analyzer
 *Defenit CTF 2020 - Web 278*<br>
-*Writeup by Payload as TryToEatSushi*
+*Writeup by Payload as ToEatSushi*
 
 
 ## Problem

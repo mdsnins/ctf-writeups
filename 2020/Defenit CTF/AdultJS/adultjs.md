@@ -1,6 +1,6 @@
 # AdultJS
 *Defenit CTF 2020 - Web 810*<br>
-*Writeup by Payload as TryToEatSushi*
+*Writeup by Payload as ToEatSushi*
 
 
 ## Problem

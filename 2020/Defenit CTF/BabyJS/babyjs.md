@@ -1,6 +1,6 @@
 # BabyJS
 *Defenit CTF 2020 - Web 248*<br>
-*Writeup by Payload as TryToEatSushi*
+*Writeup by Payload as ToEatSushi*
 
 
 ## Problem

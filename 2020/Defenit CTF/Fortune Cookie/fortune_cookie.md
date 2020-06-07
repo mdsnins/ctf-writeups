@@ -1,6 +1,6 @@
 # Fortune Cookie
 *Defenit CTF 2020 - Web 507<br>
-*Writeup by Payload as TryToEatSushi*
+*Writeup by Payload as ToEatSushi*
 
 
 ## Problem
