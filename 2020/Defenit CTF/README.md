@@ -1,6 +1,6 @@
 # Defenit CTF 2020
 
-*Writeups by Payload as TryToEatSushi*
+*Writeups by Payload as ToEatSushi*
 
 ## Solved & Writeups
 
